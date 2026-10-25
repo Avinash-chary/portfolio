@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Puligilla Avinash Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#eef1f6;
+  --surface:#f9fafc;
+  --ink:#141b34;
+  --muted:#5a6380;
+  --line:#cdd3e2;
+  --accent:#e8960c;
+  --accent-ink:#8a5200;
+  --f-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1325;--surface:#161d36;--ink:#e9ecf6;--muted:#9aa3c2;--line:#2a3354;--accent:#f2ad2e;--accent-ink:#f2ad2e;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1325;--surface:#161d36;--ink:#e9ecf6;--muted:#9aa3c2;--line:#2a3354;--accent:#f2ad2e;--accent-ink:#f2ad2e;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-block:48px 64px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:300px minmax(0,1fr);gap:64px}
+
+/* identity column */
+.side{position:sticky;top:48px;align-self:start;display:flex;flex-direction:column;gap:20px;min-width:0}
+.tag{font:500 12px/1 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
+h1{font:800 clamp(2.6rem,6vw,3.6rem)/.95 var(--f-display);letter-spacing:-.03em;margin:0;text-wrap:balance}
+.role{color:var(--muted);margin:0}
+.nav{display:flex;flex-direction:column;gap:2px;margin-top:8px}
+.nav a{font:500 13px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:6px 0;display:flex;gap:10px;align-items:center}
+.nav a::before{content:"";width:8px;height:8px;border-radius:50%;border:1.5px solid var(--line);transition:.2s}
+.nav a:hover,.nav a[aria-current="true"]{color:var(--ink)}
+.nav a:hover::before,.nav a[aria-current="true"]::before{background:var(--accent);border-color:var(--accent)}
+.facts{font:400 13px/1.7 var(--f-mono);color:var(--muted);margin:0;display:grid;gap:2px}
+
+/* sections with thread */
+main{position:relative;padding-left:36px;display:flex;flex-direction:column;gap:64px;min-width:0}
+main::before{content:"";position:absolute;left:6px;top:10px;bottom:0;width:0;border-left:2px dashed var(--line)}
+section{position:relative;scroll-margin-top:32px;min-width:0}
+section>h2{font:700 1.7rem/1.1 var(--f-display);letter-spacing:-.02em;margin:0 0 20px;text-wrap:balance}
+section>h2::before{content:"";position:absolute;left:-36px;top:.28em;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--bg)}
+p{margin:0 0 14px;max-width:62ch}
+
+/* projects */
+.proj{display:grid;gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:24px;display:grid;gap:14px;min-width:0}
+.card h3{font:700 1.3rem/1.2 var(--f-display);margin:0;letter-spacing:-.01em}
+.meta{font:400 12px var(--f-mono);letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.card ul{margin:0;padding-left:18px;display:grid;gap:6px;max-width:64ch}
+.levels{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.levels li{font:500 12px var(--f-mono);border:1px solid var(--line);border-radius:999px;padding:5px 12px;background:var(--bg)}
+.go{justify-self:start;font:600 14px var(--f-body);text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:2px}
+.go:hover{color:var(--accent-ink)}
+
+/* skills */
+.skills{display:grid;grid-template-columns:150px minmax(0,1fr);border-top:1px solid var(--line)}
+.skills dt,.skills dd{margin:0;padding:12px 0;border-bottom:1px solid var(--line)}
+.skills dt{font:500 12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:15px}
+.chips{display:flex;flex-wrap:wrap;gap:6px 8px}
+.chips span{font-weight:500}
+.chips span:not(:last-child)::after{content:"·";margin-left:8px;color:var(--muted)}
+
+/* education table */
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:520px}
+th{font:500 12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 12px 10px 0;border-bottom:1px solid var(--ink)}
+td{padding:14px 12px 14px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+td small{display:block;color:var(--muted)}
+
+/* lists */
+.rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.rows li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.rows b{font-weight:600}
+.rows .k{font:500 12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.rows span.d{color:var(--muted);display:block}
+
+/* contact */
+.mail{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.mail code{font:500 15px var(--f-mono);background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:10px 14px;user-select:all;overflow-wrap:anywhere}
+button{font:600 14px var(--f-body);background:var(--ink);color:var(--bg);border:0;border-radius:4px;padding:11px 18px;cursor:pointer}
+button:hover{background:var(--accent);color:#141b34}
+.links{display:flex;gap:20px;flex-wrap:wrap;margin-top:18px}
+.links a{font-weight:600;text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:2px}
+footer{font:400 12px var(--f-mono);color:var(--muted);margin-top:8px}
+
+@media (max-width:860px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:40px}
+  .side{position:static}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px 18px}
+  .nav a::before{display:none}
+  body{padding-block-start:32px}
+}
+@media (max-width:520px){
+  main{padding-left:28px}
+  section>h2::before{left:-28px}
+  .skills,.rows li{grid-template-columns:minmax(0,1fr)}
+  .skills dt{border-bottom:0;padding-bottom:0}
+  .rows li{gap:4px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.nav a::before{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="side">
+    <span class="tag">B.Tech CSE · Class of 2028</span>
+    <h1>Puligilla Avinash</h1>
+    <p class="role">Front-end development intern candidate. I build interactive, responsive pages with HTML, CSS and JavaScript.</p>
+    <nav class="nav" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#activity">Hackathons</a>
+      <a href="#certs">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <p class="facts">GNIT, Ibrahimpatnam<br>Telangana, India<br>JNTUH · CGPA 79.1%</p>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p>I am a third-year Computer Science undergraduate looking for a front-end development internship. I like turning an idea into something people can click, drag and play with, and I check that it works on both a laptop and a phone.</p>
+      <p>Outside class I follow artificial intelligence, prompt engineering and cybersecurity through certifications, workshops and hackathons. I am looking to apply this on real projects with an experienced team.</p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="proj">
+        <article class="card">
+          <span class="meta">HTML · CSS · JavaScript</span>
+          <h3>The Thread of Bonds</h3>
+          <p style="margin:0">A Raksha Bandhan game in the browser. Players earn one bead of the thread at the end of each level.</p>
+          <ul class="levels" aria-label="Game levels">
+            <li>Level 1 · 5-question quiz</li>
+            <li>Level 2 · 8-pair memory match</li>
+            <li>Level 3 · scratch card</li>
+          </ul>
+          <ul>
+            <li>Memory match counts moves and pairs as you play.</li>
+            <li>The scratch card works with mouse drag and touch swipe.</li>
+            <li>A progress tracker runs across levels. The final screen has a photo gallery and a greeting card made from the player's name.</li>
+            <li>Responsive on desktop and mobile. Deployed on GitHub Pages.</li>
+          </ul>
+          <a class="go" href="https://avinash-chary.github.io/rakhi-celebration-game/" target="_blank" rel="noopener">Play the game ↗</a>
+        </article>
+
+        <article class="card">
+          <span class="meta">HTML · CSS</span>
+          <h3>Personal Portfolio Website</h3>
+          <p style="margin:0">My first portfolio site, written in plain HTML and CSS. It presents my skills and projects and links to separate About and Contact pages.</p>
+          <a class="go" href="https://avinash-chary.github.io/html-portfolio/" target="_blank" rel="noopener">Open the site ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <dl class="skills">
+        <dt>Web</dt><dd class="chips"><span>HTML</span><span>CSS</span><span>JavaScript</span></dd>
+        <dt>Languages</dt><dd class="chips"><span>C</span><span>Python</span><span>Java</span></dd>
+        <dt>Database</dt><dd class="chips"><span>MySQL</span></dd>
+        <dt>Tools</dt><dd class="chips"><span>Git</span><span>GitHub</span><span>VS Code</span><span>GitHub Pages</span></dd>
+        <dt>Learning</dt><dd class="chips"><span>Artificial Intelligence</span><span>Prompt Engineering</span><span>Cybersecurity</span></dd>
+      </dl>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Qualification</th><th>Institute</th><th>Year</th><th>Score</th></tr></thead>
+          <tbody>
+            <tr><td><b>B.Tech, Computer Science &amp; Engineering</b><small>JNTUH</small></td><td>Guru Nanak Institute of Technology, Ibrahimpatnam, Telangana</td><td class="n">2024 – 2028</td><td class="n">79.1%</td></tr>
+            <tr><td><b>Intermediate</b><small>Board of Intermediate Education</small></td><td>Sri Vagdevi Junior College</td><td class="n">2024</td><td class="n">92.2%</td></tr>
+            <tr><td><b>S.S.C</b><small>Board of Secondary Education, Telangana</small></td><td>Lords High School</td><td class="n">2022</td><td class="n">98%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="activity">
+      <h2>Hackathons &amp; Workshops</h2>
+      <ul class="rows">
+        <li><span class="k">2026 · Leader</span><div><b>IGNITE AI&amp;ML Hackathon</b><span class="d">Team leader at a 24-hour inter-college hackathon held at GNIT with Devnovate.</span></div></li>
+        <li><span class="k">2026 · Attended</span><div><b>AI Innovation Workshop</b><span class="d">National-level workshop at Osmania University.</span></div></li>
+        <li><span class="k">Attended</span><div><b>Cybersec Meet-Up</b><span class="d">Organised by the IEEE-SMC Society.</span></div></li>
+      </ul>
+    </section>
+
+    <section id="certs">
+      <h2>Certifications</h2>
+      <ul class="rows">
+        <li><span class="k">Cisco</span><div><b>Artificial Intelligence</b><span class="d">Cisco Networking Academy</span></div></li>
+        <li><span class="k">GNIT × Datavalley</span><div><b>Data Visualization &amp; Analytics with Python</b></div></li>
+        <li><span class="k">Simplilearn</span><div><b>Kali Linux Training</b><span class="d">Simplilearn SkillUp</span></div></li>
+        <li><span class="k">LearnTube.ai</span><div><b>C Programming Assessment</b></div></li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>I am open to front-end internships. Write to me at:</p>
+      <div class="mail">
+        <code id="addr">avinashcharypuligilla@gmail.com</code>
+        <button type="button" id="copy">Copy email</button>
+      </div>
+      <div class="links">
+        <a href="https://github.com/avinash-chary" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <footer>© Puligilla Avinash</footer>
+    </section>
+  </main>
+</div>
+
+<script>
+(function(){
+  var btn=document.getElementById('copy'),el=document.getElementById('addr');
+  btn.addEventListener('click',function(){
+    var t=el.textContent,done=function(){btn.textContent='Copied';setTimeout(function(){btn.textContent='Copy email'},1800)};
+    var fb=function(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Press copy'};
+    try{navigator.clipboard.writeText(t).then(done,fb)}catch(e){fb()}
+  });
+  var links=[].slice.call(document.querySelectorAll('.nav a')),secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.removeAttribute('aria-current')});links[secs.indexOf(e.target)].setAttribute('aria-current','true')}})},{rootMargin:'-20% 0px -70% 0px'});
+    secs.forEach(function(s){io.observe(s)});
+  }
+})();
+</script>
+</body>
+</html>
